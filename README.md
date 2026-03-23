@@ -23,17 +23,15 @@ Claude Code explores your codebase on every session — running Glob, Grep, and 
 
 A layered context system that gives Claude a **compass instead of a GPS** — just enough structure to navigate efficiently, loaded only when relevant.
 
-```
 Token Usage Comparison:
 ┌─────────────────────────────────┬──────────────────┐
-│ Without Optimizer               │ With Optimizer    │
+│ Without Optimizer               │ With Optimizer   │
 ├─────────────────────────────────┼──────────────────┤
 │ ~20-40 tool calls per task      │ ~5-10 tool calls │
 │ Full exploration every session  │ Targeted reads   │
 │ No awareness of conventions     │ Follows patterns │
 │ Re-discovers architecture       │ Knows the map    │
 └─────────────────────────────────┴──────────────────┘
-```
 
 ## Installation
 
