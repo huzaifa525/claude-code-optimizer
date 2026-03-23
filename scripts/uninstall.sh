@@ -31,10 +31,9 @@ remove_item() {
 }
 
 # Skills
-remove_item "${CLAUDE_HOME}/skills/explore-area" "Skill: explore-area"
-remove_item "${CLAUDE_HOME}/skills/gen-context" "Skill: gen-context"
-remove_item "${CLAUDE_HOME}/skills/smart-edit" "Skill: smart-edit"
-remove_item "${CLAUDE_HOME}/skills/token-check" "Skill: token-check"
+for skill in explore-area gen-context smart-edit token-check planning commit review create-pr fix-issue tdd debug-error refactor document security-scan perf-check dep-check changelog migrate onboard plan optimize-tokens; do
+    remove_item "${CLAUDE_HOME}/skills/${skill}" "Skill: ${skill}"
+done
 
 # Rules
 remove_item "${CLAUDE_HOME}/rules/frontend.md" "Rule: frontend.md"

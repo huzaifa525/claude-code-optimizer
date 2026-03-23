@@ -192,7 +192,10 @@ function installGlobal() {
   log(`${BOLD}${GREEN}  Installation complete!${RESET}`);
   log("");
   log("  What was installed:");
-  log(`    ${CYAN}~/.claude/skills/${RESET}     4 skills (explore-area, gen-context, smart-edit, token-check)`);
+  log(`    ${CYAN}~/.claude/skills/${RESET}     21 skills (explore-area, gen-context, smart-edit, token-check,`);
+  log(`                          planning, commit, review, create-pr, fix-issue, tdd,`);
+  log(`                          debug-error, refactor, document, security-scan, perf-check,`);
+  log(`                          dep-check, changelog, migrate, onboard, plan, optimize-tokens)`);
   log(`    ${CYAN}~/.claude/rules/${RESET}      4 rules (frontend, backend, database, testing)`);
   log(`    ${CYAN}~/.claude/hooks/${RESET}      3 hooks (generate-context, protect-files, filter-test-output)`);
   log(`    ${CYAN}~/.claude/${RESET}            CLAUDE.md.template + claudeignore.template`);
@@ -308,11 +311,15 @@ function uninstall() {
   log(`${BOLD}  Claude Code Optimizer — Uninstall${RESET}`);
   log("");
 
+  const skillNames = [
+    "explore-area", "gen-context", "smart-edit", "token-check",
+    "planning", "commit", "review", "create-pr", "fix-issue", "tdd",
+    "debug-error", "refactor", "document", "security-scan", "perf-check",
+    "dep-check", "changelog", "migrate", "onboard", "plan", "optimize-tokens"
+  ];
+
   const items = [
-    { path: path.join(CLAUDE_HOME, "skills", "explore-area"), label: "Skill: explore-area" },
-    { path: path.join(CLAUDE_HOME, "skills", "gen-context"), label: "Skill: gen-context" },
-    { path: path.join(CLAUDE_HOME, "skills", "smart-edit"), label: "Skill: smart-edit" },
-    { path: path.join(CLAUDE_HOME, "skills", "token-check"), label: "Skill: token-check" },
+    ...skillNames.map((s) => ({ path: path.join(CLAUDE_HOME, "skills", s), label: `Skill: ${s}` })),
     { path: path.join(CLAUDE_HOME, "rules", "frontend.md"), label: "Rule: frontend.md" },
     { path: path.join(CLAUDE_HOME, "rules", "backend.md"), label: "Rule: backend.md" },
     { path: path.join(CLAUDE_HOME, "rules", "database.md"), label: "Rule: database.md" },

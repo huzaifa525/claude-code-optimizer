@@ -42,7 +42,7 @@ function Download-File {
 
 # Skills
 Write-Host "  Skills:"
-$Skills = @("explore-area", "gen-context", "smart-edit", "token-check")
+$Skills = @("explore-area", "gen-context", "smart-edit", "token-check", "planning", "commit", "review", "create-pr", "fix-issue", "tdd", "debug-error", "refactor", "document", "security-scan", "perf-check", "dep-check", "changelog", "migrate", "onboard", "plan", "optimize-tokens")
 foreach ($Skill in $Skills) {
     Download-File `
         -Url "$BaseUrl/templates/.claude/skills/$Skill/SKILL.md" `
@@ -92,7 +92,7 @@ Write-Host "  Installation complete!" -ForegroundColor Green
 Write-Host ""
 Write-Host "  Installed to ~/.claude/:"
 Write-Host "    skills/   " -ForegroundColor Cyan -NoNewline
-Write-Host "explore-area, gen-context, smart-edit, token-check"
+Write-Host "21 skills (explore-area, commit, review, create-pr, fix-issue, etc.)"
 Write-Host "    rules/    " -ForegroundColor Cyan -NoNewline
 Write-Host "frontend, backend, database, testing"
 Write-Host "    hooks/    " -ForegroundColor Cyan -NoNewline

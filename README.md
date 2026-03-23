@@ -83,7 +83,7 @@ cp ~/.claude/claudeignore.template ./.claudeignore
 
 | Type | Count | Installed To |
 | :--- | :---: | :--- |
-| Skills | 4 | `~/.claude/skills/` |
+| Skills | 21 | `~/.claude/skills/` |
 | Rules | 4 | `~/.claude/rules/` |
 | Hooks | 3 | `~/.claude/hooks/` |
 | Templates | 2 | `~/.claude/` |
@@ -94,12 +94,46 @@ cp ~/.claude/claudeignore.template ./.claudeignore
 
 Skills are commands you can invoke inside Claude Code with `/skill-name`. They run as specialized prompts that guide Claude to work smarter.
 
+#### Exploration & Context
+
 | Skill | Purpose | How to Invoke |
 | :--- | :--- | :--- |
 | `/explore-area` | Deep codebase exploration before changes | `/explore-area src/api/` |
 | `/gen-context` | Generate fresh project context summary | `/gen-context` |
-| `/smart-edit` | Pattern-aware code changes | `/smart-edit Add delete endpoint` |
+| `/onboard` | Full onboarding guide for new developers | `/onboard` |
 | `/token-check` | Session token usage analysis | `/token-check` |
+| `/optimize-tokens` | Web search for latest optimization tips + project analysis | `/optimize-tokens` |
+
+#### Development Workflow
+
+| Skill | Purpose | How to Invoke |
+| :--- | :--- | :--- |
+| `/planning` | Persistent markdown planning for complex tasks | Auto-activates on complex tasks |
+| `/plan` | Create implementation plan with task breakdown | `/plan Add user notifications` |
+| `/smart-edit` | Pattern-aware code changes | `/smart-edit Add delete endpoint` |
+| `/tdd` | Test-Driven Development cycle | `/tdd user login validation` |
+| `/fix-issue` | Fetch GitHub issue, implement fix, test, commit | `/fix-issue 42` |
+| `/debug-error` | Analyze error, find root cause, fix | `/debug-error Cannot read property of undefined` |
+| `/refactor` | Refactor code while preserving behavior | `/refactor auth middleware` |
+| `/migrate` | Migrate between frameworks/versions | `/migrate React-Router-v5 React-Router-v6` |
+
+#### Git & GitHub
+
+| Skill | Purpose | How to Invoke |
+| :--- | :--- | :--- |
+| `/commit` | Generate conventional commit message and commit | `/commit` |
+| `/create-pr` | Create PR with auto-generated description | `/create-pr` |
+| `/changelog` | Generate changelog from git history | `/changelog` |
+
+#### Code Quality & Security
+
+| Skill | Purpose | How to Invoke |
+| :--- | :--- | :--- |
+| `/review` | Review changes for quality, security, performance | `/review` |
+| `/security-scan` | OWASP top 10, secrets, injection scan | `/security-scan` |
+| `/perf-check` | N+1 queries, memory leaks, bundle size analysis | `/perf-check src/api/` |
+| `/dep-check` | Outdated/vulnerable dependency check | `/dep-check` |
+| `/document` | Generate docs/JSDoc/docstrings | `/document src/utils/` |
 
 ### `/explore-area [directory]`
 
@@ -208,6 +242,120 @@ Optimization tips:
 - 2 MCP servers unused this session
 - CLAUDE.md is 340 lines (recommend < 200)
 ```
+
+---
+
+### `/planning`
+
+**What it does:** Automatically creates a `task_plan.md` file for complex tasks. Breaks work into steps, tracks progress with checkboxes, and survives across sessions. When you resume a session, Claude reads the plan and continues where it left off.
+
+**Auto-activates** when a task requires 5+ steps. No need to invoke manually.
+
+---
+
+### `/commit`
+
+**What it does:** Analyzes your staged changes (`git diff --cached`), checks your recent commit style, and generates a conventional commit message (feat:, fix:, refactor:, etc.). Then commits.
+
+**How to invoke:** Stage your changes with `git add`, then type `/commit`.
+
+---
+
+### `/review`
+
+**What it does:** Runs `git diff`, reads every changed file, and checks for code quality, security vulnerabilities, performance issues, and convention violations. Returns a structured report with severity levels.
+
+**Runs in a forked subagent** — review tokens don't pollute your main context.
+
+---
+
+### `/create-pr`
+
+**What it does:** Analyzes ALL commits on your branch (not just the latest), generates a PR title, summary bullets, change list, and test plan checklist. Pushes and creates the PR via `gh`.
+
+---
+
+### `/fix-issue [number]`
+
+**What it does:** Fetches a GitHub issue, creates a branch, finds relevant code, implements the fix, writes tests, runs them, and commits with the issue number.
+
+**How to invoke:** `/fix-issue 42`
+
+---
+
+### `/tdd [feature]`
+
+**What it does:** Strict Test-Driven Development — writes a failing test first, implements the minimum code to pass, verifies, then refactors. Repeats until the feature is complete.
+
+---
+
+### `/debug-error [error]`
+
+**What it does:** Parses an error message or stack trace, traces the root cause through the codebase, checks recent git changes, implements a fix, and verifies.
+
+---
+
+### `/refactor [target]`
+
+**What it does:** Runs tests first to establish a baseline, then refactors incrementally. After each change, runs tests again. If anything breaks, reverts immediately.
+
+---
+
+### `/security-scan`
+
+**What it does:** Scans for OWASP top 10 vulnerabilities — hardcoded secrets, SQL injection, XSS, missing auth, insecure configs, dependency vulnerabilities. Returns a severity-ranked report.
+
+**Runs in a forked subagent** — scan tokens stay isolated.
+
+---
+
+### `/perf-check [target]`
+
+**What it does:** Analyzes for N+1 queries, memory leaks, unnecessary re-renders, large bundle imports, missing caching, O(n²) algorithms, and more.
+
+**Runs in a forked subagent.**
+
+---
+
+### `/dep-check`
+
+**What it does:** Runs `npm audit` / `pip audit`, checks for outdated packages, flags deprecated dependencies, and suggests upgrades with breaking change warnings.
+
+---
+
+### `/changelog`
+
+**What it does:** Generates a changelog from git history since the last tag. Groups commits by type (features, fixes, breaking changes). Outputs or updates CHANGELOG.md.
+
+---
+
+### `/migrate [from] [to]`
+
+**What it does:** Greps for all usages of the old API/library, creates a migration plan, applies changes file by file, runs tests after each file, and reports what couldn't be auto-migrated.
+
+**How to invoke:** `/migrate Express-v4 Express-v5` or `/migrate React-Router-v5 React-Router-v6`
+
+---
+
+### `/onboard`
+
+**What it does:** Generates a complete onboarding guide — project structure, tech stack, dev workflow, code conventions, common tasks, environment variables, and useful commands.
+
+**Runs in a forked subagent.**
+
+---
+
+### `/plan [feature]`
+
+**What it does:** Creates a phased implementation plan with task breakdown, file mapping, reference code pointers, dependencies, and risk assessment.
+
+**Runs in a forked subagent** using the Plan agent.
+
+---
+
+### `/optimize-tokens`
+
+**What it does:** Searches the web for the latest Claude Code token optimization tips, then analyzes your current project setup (CLAUDE.md size, .claudeignore, rules, skills, MCP servers, settings). Returns a scored report with quick wins.
 
 ---
 
@@ -330,7 +478,8 @@ cp ~/.claude/claudeignore.template ./.claudeignore
 | **Always Loaded** | `CLAUDE.md` loads — Claude sees commands, entry points, flow diagrams, decisions | ~200 |
 | **Always Active** | `.claudeignore` blocks node_modules, dist, lock files, .env from being read | 0 |
 | **On-Demand** | Rules load based on what files Claude reads (frontend.md, backend.md, etc.) | ~500 when active |
-| **User Invoked** | Skills run in forked subagents (`/explore-area`, `/smart-edit`, etc.) | 0 in main context |
+| **Auto Planning** | `planning` skill activates on complex tasks — creates task_plan.md | ~200 |
+| **User Invoked** | 21 skills for commits, reviews, PRs, debugging, security, etc. | 0 in main context (forked) |
 | **Every Edit** | `protect-files.sh` guards .env, credentials, lock files | ~10 |
 
 **Total always-on overhead: ~300 tokens.** Everything else loads only when needed.

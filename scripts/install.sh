@@ -63,7 +63,7 @@ download() {
 
 # ── Skills ──
 echo "  Skills:"
-SKILLS="explore-area gen-context smart-edit token-check"
+SKILLS="explore-area gen-context smart-edit token-check planning commit review create-pr fix-issue tdd debug-error refactor document security-scan perf-check dep-check changelog migrate onboard plan optimize-tokens"
 for skill in $SKILLS; do
     download \
         "${BASE_URL}/templates/.claude/skills/${skill}/SKILL.md" \
@@ -108,7 +108,7 @@ echo ""
 echo -e "${BOLD}${GREEN}  Installation complete!${RESET}"
 echo ""
 echo "  Installed to ~/.claude/:"
-echo -e "    ${CYAN}skills/${RESET}   explore-area, gen-context, smart-edit, token-check"
+echo -e "    ${CYAN}skills/${RESET}   21 skills (explore-area, commit, review, create-pr, fix-issue, etc.)"
 echo -e "    ${CYAN}rules/${RESET}    frontend, backend, database, testing"
 echo -e "    ${CYAN}hooks/${RESET}    generate-context, protect-files, filter-test-output"
 echo ""

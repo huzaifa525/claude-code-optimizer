@@ -1,6 +1,7 @@
 ---
 name: gen-context
 description: Generate a fresh project context summary. Use when starting a new session or when the project has changed significantly.
+disable-model-invocation: true
 allowed-tools: Read, Grep, Glob, Bash
 context: fork
 agent: Explore
