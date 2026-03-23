@@ -85,7 +85,7 @@ echo ""
 
 # ── Hooks ──
 echo "  Hooks:"
-HOOKS="generate-context.sh protect-files.sh filter-test-output.sh block-dangerous.sh auto-format.sh commit-reminder.sh resume-plan.sh"
+HOOKS="generate-context.sh protect-files.sh filter-test-output.sh block-dangerous.sh auto-format.sh commit-reminder.sh resume-plan.sh auto-setup.sh"
 for hook in $HOOKS; do
     download \
         "${BASE_URL}/templates/.claude/hooks/${hook}" \

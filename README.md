@@ -85,7 +85,7 @@ cp ~/.claude/claudeignore.template ./.claudeignore
 | :--- | :---: | :--- |
 | Skills | 21 | `~/.claude/skills/` |
 | Rules | 5 | `~/.claude/rules/` |
-| Hooks | 7 | `~/.claude/hooks/` |
+| Hooks | 8 | `~/.claude/hooks/` |
 | Templates | 2 | `~/.claude/` |
 
 ---
@@ -409,6 +409,7 @@ Hooks are shell scripts that run automatically at specific moments in Claude Cod
 | `auto-format.sh` | After every file edit | Auto-runs prettier/black/gofmt/rustfmt on edited files |
 | `filter-test-output.sh` | After test/build/lint commands | Filters verbose output (50+ lines) to summary only |
 | `commit-reminder.sh` | When Claude stops responding | Reminds about uncommitted changes, suggests `/commit` |
+| `auto-setup.sh` | Every session start | Auto-generates `CLAUDE.md` and `.claudeignore` if missing — detects stack, framework, entry points, commands |
 
 ### `generate-context.sh`
 

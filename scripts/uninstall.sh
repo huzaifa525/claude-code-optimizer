@@ -42,7 +42,7 @@ remove_item "${CLAUDE_HOME}/rules/database.md" "Rule: database.md"
 remove_item "${CLAUDE_HOME}/rules/testing.md" "Rule: testing.md"
 
 # Hooks
-for hook in generate-context.sh protect-files.sh filter-test-output.sh block-dangerous.sh auto-format.sh commit-reminder.sh resume-plan.sh; do
+for hook in generate-context.sh protect-files.sh filter-test-output.sh block-dangerous.sh auto-format.sh commit-reminder.sh resume-plan.sh auto-setup.sh; do
     remove_item "${CLAUDE_HOME}/hooks/${hook}" "Hook: ${hook}"
 done
 
