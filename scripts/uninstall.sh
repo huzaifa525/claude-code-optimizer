@@ -42,9 +42,9 @@ remove_item "${CLAUDE_HOME}/rules/database.md" "Rule: database.md"
 remove_item "${CLAUDE_HOME}/rules/testing.md" "Rule: testing.md"
 
 # Hooks
-remove_item "${CLAUDE_HOME}/hooks/generate-context.sh" "Hook: generate-context.sh"
-remove_item "${CLAUDE_HOME}/hooks/protect-files.sh" "Hook: protect-files.sh"
-remove_item "${CLAUDE_HOME}/hooks/filter-test-output.sh" "Hook: filter-test-output.sh"
+for hook in generate-context.sh protect-files.sh filter-test-output.sh block-dangerous.sh auto-format.sh commit-reminder.sh resume-plan.sh; do
+    remove_item "${CLAUDE_HOME}/hooks/${hook}" "Hook: ${hook}"
+done
 
 # Templates
 remove_item "${CLAUDE_HOME}/CLAUDE.md.template" "CLAUDE.md.template"

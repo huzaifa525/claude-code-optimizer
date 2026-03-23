@@ -54,7 +54,7 @@ Write-Host ""
 
 # Rules
 Write-Host "  Rules:"
-$Rules = @("frontend.md", "backend.md", "database.md", "testing.md")
+$Rules = @("frontend.md", "backend.md", "database.md", "testing.md", "token-optimization.md")
 foreach ($Rule in $Rules) {
     Download-File `
         -Url "$BaseUrl/templates/.claude/rules/$Rule" `
@@ -66,7 +66,7 @@ Write-Host ""
 
 # Hooks
 Write-Host "  Hooks:"
-$Hooks = @("generate-context.sh", "protect-files.sh", "filter-test-output.sh")
+$Hooks = @("generate-context.sh", "protect-files.sh", "filter-test-output.sh", "block-dangerous.sh", "auto-format.sh", "commit-reminder.sh", "resume-plan.sh")
 foreach ($Hook in $Hooks) {
     Download-File `
         -Url "$BaseUrl/templates/.claude/hooks/$Hook" `

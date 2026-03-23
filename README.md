@@ -84,8 +84,8 @@ cp ~/.claude/claudeignore.template ./.claudeignore
 | Type | Count | Installed To |
 | :--- | :---: | :--- |
 | Skills | 21 | `~/.claude/skills/` |
-| Rules | 4 | `~/.claude/rules/` |
-| Hooks | 3 | `~/.claude/hooks/` |
+| Rules | 5 | `~/.claude/rules/` |
+| Hooks | 7 | `~/.claude/hooks/` |
 | Templates | 2 | `~/.claude/` |
 
 ---
@@ -402,9 +402,13 @@ Hooks are shell scripts that run automatically at specific moments in Claude Cod
 
 | Hook | Triggers On | What It Does |
 | :--- | :--- | :--- |
-| `generate-context.sh` | Every session start | Injects recent commits, uncommitted changes, current branch into context |
-| `protect-files.sh` | Every file edit/write attempt | Blocks edits to `.env`, credentials, lock files, `.git/`, private keys |
-| `filter-test-output.sh` | After any test command runs | Filters verbose output (50+ lines) to pass/fail summary only |
+| `generate-context.sh` | Every session start | Injects recent commits, uncommitted changes, branch, active plan into context |
+| `resume-plan.sh` | Every session start | Detects task_plan.md and injects it so `/planning` continues across sessions |
+| `protect-files.sh` | Every file edit/write | Blocks edits to `.env`, credentials, lock files, `.git/`, private keys |
+| `block-dangerous.sh` | Every bash command | Blocks `rm -rf /`, `git push --force main`, `DROP TABLE`, etc. |
+| `auto-format.sh` | After every file edit | Auto-runs prettier/black/gofmt/rustfmt on edited files |
+| `filter-test-output.sh` | After test/build/lint commands | Filters verbose output (50+ lines) to summary only |
+| `commit-reminder.sh` | When Claude stops responding | Reminds about uncommitted changes, suggests `/commit` |
 
 ### `generate-context.sh`
 

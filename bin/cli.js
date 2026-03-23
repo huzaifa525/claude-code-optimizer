@@ -197,7 +197,8 @@ function installGlobal() {
   log(`                          debug-error, refactor, document, security-scan, perf-check,`);
   log(`                          dep-check, changelog, migrate, onboard, plan, optimize-tokens)`);
   log(`    ${CYAN}~/.claude/rules/${RESET}      4 rules (frontend, backend, database, testing)`);
-  log(`    ${CYAN}~/.claude/hooks/${RESET}      3 hooks (generate-context, protect-files, filter-test-output)`);
+  log(`    ${CYAN}~/.claude/hooks/${RESET}      7 hooks (generate-context, protect-files, filter-test-output,`);
+  log(`                          block-dangerous, auto-format, commit-reminder, resume-plan)`);
   log(`    ${CYAN}~/.claude/${RESET}            CLAUDE.md.template + claudeignore.template`);
   log("");
   log("  Next steps:");
@@ -324,9 +325,7 @@ function uninstall() {
     { path: path.join(CLAUDE_HOME, "rules", "backend.md"), label: "Rule: backend.md" },
     { path: path.join(CLAUDE_HOME, "rules", "database.md"), label: "Rule: database.md" },
     { path: path.join(CLAUDE_HOME, "rules", "testing.md"), label: "Rule: testing.md" },
-    { path: path.join(CLAUDE_HOME, "hooks", "generate-context.sh"), label: "Hook: generate-context.sh" },
-    { path: path.join(CLAUDE_HOME, "hooks", "protect-files.sh"), label: "Hook: protect-files.sh" },
-    { path: path.join(CLAUDE_HOME, "hooks", "filter-test-output.sh"), label: "Hook: filter-test-output.sh" },
+    ...["generate-context", "protect-files", "filter-test-output", "block-dangerous", "auto-format", "commit-reminder", "resume-plan"].map((h) => ({ path: path.join(CLAUDE_HOME, "hooks", `${h}.sh`), label: `Hook: ${h}.sh` })),
     { path: path.join(CLAUDE_HOME, "CLAUDE.md.template"), label: "CLAUDE.md.template" },
     { path: path.join(CLAUDE_HOME, "claudeignore.template"), label: "claudeignore.template" },
   ];

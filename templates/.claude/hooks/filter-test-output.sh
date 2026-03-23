@@ -10,9 +10,11 @@ INPUT=$(cat)
 COMMAND=$(echo "$INPUT" | jq -r '.tool_input.command // empty' 2>/dev/null)
 OUTPUT=$(echo "$INPUT" | jq -r '.stdout // empty' 2>/dev/null)
 
-# Only filter test commands
+# Only filter test, build, and lint commands
 case "$COMMAND" in
     *"npm test"*|*"jest"*|*"vitest"*|*"pytest"*|*"cargo test"*|*"go test"*)
+        ;;
+    *"npm run build"*|*"npm run lint"*|*"eslint"*|*"tsc"*|*"ruff check"*)
         ;;
     *)
         exit 0

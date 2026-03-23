@@ -1,4 +1,7 @@
 {
+  "env": {
+    "MAX_THINKING_TOKENS": "10000"
+  },
   "hooks": {
     "SessionStart": [
       {
@@ -6,7 +9,11 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/hooks/generate-context.sh"
+            "command": "bash ~/.claude/hooks/generate-context.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/resume-plan.sh"
           }
         ]
       }
@@ -17,7 +24,47 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash .claude/hooks/protect-files.sh"
+            "command": "bash ~/.claude/hooks/protect-files.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/block-dangerous.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/auto-format.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/filter-test-output.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/commit-reminder.sh"
           }
         ]
       }
