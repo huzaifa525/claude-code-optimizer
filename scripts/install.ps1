@@ -76,6 +76,15 @@ foreach ($Hook in $Hooks) {
 
 Write-Host ""
 
+# Settings
+Write-Host "  Settings:"
+Download-File `
+    -Url "$BaseUrl/templates/.claude/settings.json" `
+    -Dest (Join-Path $ClaudeHome "settings.json") `
+    -Label "settings.json (hooks wired + MAX_THINKING_TOKENS=10000)"
+
+Write-Host ""
+
 # Templates
 Write-Host "  Templates:"
 Download-File `

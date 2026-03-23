@@ -95,6 +95,15 @@ done
 
 echo ""
 
+# ── Settings ──
+echo "  Settings:"
+download \
+    "${BASE_URL}/templates/.claude/settings.json" \
+    "${CLAUDE_HOME}/settings.json" \
+    "settings.json (hooks wired + MAX_THINKING_TOKENS=10000)"
+
+echo ""
+
 # ── Templates ──
 echo "  Templates:"
 download \

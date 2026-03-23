@@ -178,15 +178,27 @@ function installGlobal() {
 
   log("");
 
+  // Install settings.json globally (wires all hooks + MAX_THINKING_TOKENS)
+  const settingsSrc = path.join(TEMPLATES_DIR, ".claude", "settings.json");
+  const settingsDest = path.join(CLAUDE_HOME, "settings.json");
+  if (fs.existsSync(settingsDest)) {
+    skip("settings.json (already exists — hooks may need manual merge)");
+  } else {
+    fs.copyFileSync(settingsSrc, settingsDest);
+    success("settings.json (hooks wired + MAX_THINKING_TOKENS=10000)");
+  }
+
+  log("");
+
   // Install CLAUDE.md template to ~/.claude/ (as a reference, not active)
   const claudeMdSrc = path.join(TEMPLATES_DIR, "CLAUDE.md");
   const claudeMdDest = path.join(CLAUDE_HOME, "CLAUDE.md.template");
-  copyFileIfNotExists(claudeMdSrc, claudeMdDest, "CLAUDE.md.template (copy to your project root as CLAUDE.md)");
+  copyFileIfNotExists(claudeMdSrc, claudeMdDest, "CLAUDE.md.template (use /setup in any repo to auto-generate)");
 
   // Install .claudeignore template
   const ignoreSrc = path.join(TEMPLATES_DIR, ".claudeignore");
   const ignoreDest = path.join(CLAUDE_HOME, "claudeignore.template");
-  copyFileIfNotExists(ignoreSrc, ignoreDest, "claudeignore.template (copy to your project root as .claudeignore)");
+  copyFileIfNotExists(ignoreSrc, ignoreDest, "claudeignore.template (use /setup in any repo to auto-generate)");
 
   log("");
   log(`${BOLD}${GREEN}  Installation complete!${RESET}`);
@@ -202,12 +214,10 @@ function installGlobal() {
   log(`    ${CYAN}~/.claude/${RESET}            CLAUDE.md.template + claudeignore.template`);
   log("");
   log("  Next steps:");
-  log(`    1. Copy templates to your project:`);
-  log(`       ${DIM}cp ~/.claude/CLAUDE.md.template ./CLAUDE.md${RESET}`);
-  log(`       ${DIM}cp ~/.claude/claudeignore.template ./.claudeignore${RESET}`);
-  log(`    2. Edit CLAUDE.md with your project details`);
-  log(`    3. Edit rules in ~/.claude/rules/ for your stack`);
-  log(`    4. Start Claude Code and try: ${CYAN}/explore-area src/${RESET}`);
+  log(`    1. Open Claude Code in any repo`);
+  log(`    2. Type ${CYAN}/setup${RESET} to auto-generate CLAUDE.md and .claudeignore for that project`);
+  log(`    3. Everything else works automatically`);
+  log(`    4. Or type ${CYAN}/explore-area src/${RESET} to explore`);
   log("");
 }
 
