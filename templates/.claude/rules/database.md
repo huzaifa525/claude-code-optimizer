@@ -36,4 +36,10 @@ paths:
 - [Never store passwords in plain text]
 - [Never return full user objects with password hashes]
 
+## Skills to Use
+- Before modifying schema → use `/explore-area src/models/` or `/explore-area prisma/`
+- For new migrations → use `/smart-edit` to follow existing migration patterns
+- For query performance → use `/perf-check` to detect N+1 queries, missing indexes
+- For security → use `/security-scan` to check for data exposure
+
 <!-- Rule template by Huzefa Nalkheda Wala | claude-code-optimizer -->

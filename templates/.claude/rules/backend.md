@@ -33,4 +33,10 @@ paths:
 - [Never access database directly from controllers]
 - [Never return raw database errors to client]
 
+## Skills to Use
+- Before adding a new endpoint → use `/smart-edit` to follow existing patterns
+- Before modifying API logic → use `/explore-area src/api/` to understand the area
+- After changes → use `/review` to check quality and security
+- For TDD approach → use `/tdd` to write tests first
+
 <!-- Rule template by Huzefa Nalkheda Wala | claude-code-optimizer -->

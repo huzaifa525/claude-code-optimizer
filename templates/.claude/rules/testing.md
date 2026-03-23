@@ -40,4 +40,10 @@ paths:
 - [How to seed test data]
 - [How to clean up after tests]
 
+## Skills to Use
+- For new features → use `/tdd` for strict test-driven development
+- Before editing tests → use `/explore-area tests/` to understand test patterns
+- For debugging test failures → use `/debug-error` with the error message
+- After refactoring → use `/refactor` which auto-runs tests before and after
+
 <!-- Rule template by Huzefa Nalkheda Wala | claude-code-optimizer -->

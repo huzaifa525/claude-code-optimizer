@@ -32,4 +32,10 @@ paths:
 - [Don't use class components]
 - [Don't import from barrel files in the same module]
 
+## Skills to Use
+- Before adding a new component → use `/smart-edit` to match existing component patterns
+- Before touching unfamiliar components → use `/explore-area src/components/`
+- For performance issues → use `/perf-check` to detect unnecessary re-renders, large imports
+- After changes → use `/review` to check quality
+
 <!-- Rule template by Huzefa Nalkheda Wala | claude-code-optimizer -->

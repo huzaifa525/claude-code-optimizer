@@ -35,3 +35,11 @@ Database → ORM → Service Layer → Controller → Response → Client Cache 
 - Search `@claude-entry` for system entry points
 - Search `@claude-pattern` for examples to follow
 - Search `@claude-warning` for files not to modify
+
+## Workflow
+- New feature → `/plan` first, then `/smart-edit` to implement
+- Bug fix → `/debug-error` or `/fix-issue [number]`
+- Before editing unfamiliar code → `/explore-area [dir]`
+- After all changes → `/review` then `/commit`
+- Ready to merge → `/create-pr`
+- New developer → `/onboard`
