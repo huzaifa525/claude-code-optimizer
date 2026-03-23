@@ -1,8 +1,14 @@
 # Claude Code Optimizer
 
+[![npm version](https://img.shields.io/npm/v/claude-code-optimizer.svg)](https://www.npmjs.com/package/claude-code-optimizer)
+[![npm downloads](https://img.shields.io/npm/dm/claude-code-optimizer.svg)](https://www.npmjs.com/package/claude-code-optimizer)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 > **Created by [Huzefa Nalkheda Wala](https://huzefanalkhedawala.in/)** — AI Product Engineer | IIT Ropar | [GitHub](https://github.com/huzaifa525) | [LinkedIn](https://linkedin.com/in/huzefanalkheda) | [HuggingFace](https://huggingface.co/huzaifa525)
 
 A complete toolkit to make Claude Code faster, cheaper, and smarter when working with your codebase.
+
+**npm:** [npmjs.com/package/claude-code-optimizer](https://www.npmjs.com/package/claude-code-optimizer)
 
 ## The Problem
 
@@ -65,17 +71,29 @@ claude-code-optimizer/
 
 ## Installation
 
-### npx (Windows, Mac, Linux — requires Node.js)
+### npm (Windows, Mac, Linux)
 
 ```bash
 # Install globally (recommended)
+npm i -g claude-code-optimizer
+
+# Then run
+claude-code-optimizer
+# or
+cco
+```
+
+### npx (no install needed)
+
+```bash
+# Run directly
 npx claude-code-optimizer
 
 # Or use the short alias
 npx cco
 ```
 
-**Other npx commands:**
+**Other commands:**
 
 ```bash
 # Install to current project only
