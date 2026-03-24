@@ -18,6 +18,10 @@
           {
             "type": "command",
             "command": "bash ~/.claude/hooks/auto-setup.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/auto-update-check.sh"
           }
         ]
       }
@@ -69,6 +73,10 @@
           {
             "type": "command",
             "command": "bash ~/.claude/hooks/commit-reminder.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/token-savings-footer.sh"
           }
         ]
       }

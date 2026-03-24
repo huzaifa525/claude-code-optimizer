@@ -41,7 +41,7 @@ for rule in frontend.md backend.md database.md testing.md token-optimization.md 
 done
 
 # Hooks
-for hook in generate-context.sh protect-files.sh filter-test-output.sh block-dangerous.sh auto-format.sh commit-reminder.sh resume-plan.sh auto-setup.sh; do
+for hook in generate-context.sh protect-files.sh filter-test-output.sh block-dangerous.sh auto-format.sh commit-reminder.sh resume-plan.sh auto-setup.sh auto-update-check.sh token-savings-footer.sh; do
     remove_item "${CLAUDE_HOME}/hooks/${hook}" "Hook: ${hook}"
 done
 

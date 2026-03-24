@@ -66,7 +66,7 @@ Write-Host ""
 
 # Hooks
 Write-Host "  Hooks:"
-$Hooks = @("generate-context.sh", "protect-files.sh", "filter-test-output.sh", "block-dangerous.sh", "auto-format.sh", "commit-reminder.sh", "resume-plan.sh", "auto-setup.sh")
+$Hooks = @("generate-context.sh", "protect-files.sh", "filter-test-output.sh", "block-dangerous.sh", "auto-format.sh", "commit-reminder.sh", "resume-plan.sh", "auto-setup.sh", "auto-update-check.sh", "token-savings-footer.sh")
 foreach ($Hook in $Hooks) {
     Download-File `
         -Url "$BaseUrl/templates/.claude/hooks/$Hook" `
