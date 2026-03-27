@@ -1,6 +1,6 @@
 {
   "name": "claude-code-optimizer",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Optimize Claude Code token usage with smart rules, skills, hooks, and context templates",
   "author": "Huzefa Nalkheda Wala <huzaifanalkhedaemp@gmail.com> (https://huzefanalkhedawala.in)",
   "license": "MIT",
@@ -34,6 +34,7 @@
     "bin/",
     "templates/",
     "scripts/",
+    ".claude-plugin/",
     "README.md",
     "LICENSE"
   ],

@@ -21,6 +21,8 @@ When the user asks you to do something, check this list FIRST and invoke the mat
 - User wants to **refactor** / "clean up" / "restructure" → use `/refactor`
 - User wants to **migrate** / "upgrade" / "move from X to Y" → use `/migrate`
 - User wants to **debug** / "fix this error" / "why is this failing" → use `/debug-error`
+- User wants **isolated development** / "work in a branch" / "safe workspace" → use `/worktree`
+- User wants to **execute a plan with subagents** / "parallel execution" / "dispatch tasks" → use `/subagent-dev`
 
 ## Documentation & Context
 - User wants **documentation** / "add docs" / "document this" → use `/document`
@@ -31,6 +33,7 @@ When the user asks you to do something, check this list FIRST and invoke the mat
 ## Optimization
 - User wants to **check token usage** / "how many tokens" / "session health" → use `/token-check`
 - User wants to **optimize tokens** / "reduce cost" / "save tokens" → use `/optimize-tokens`
+- User wants to **change optimization mode** / "aggressive mode" / "thorough mode" → use `/mode`
 
 ## Rules
 - If multiple skills match, pick the most specific one

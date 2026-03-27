@@ -46,7 +46,7 @@ if [ "$INSTALLED" != "$LATEST" ]; then
     echo "## Claude Code Optimizer Update Available"
     echo ""
     echo "Installed: v${INSTALLED} → Latest: v${LATEST}"
-    echo "Run: \`npm i -g claude-code-optimizer@latest\`"
+    echo "Run: \`npm i -g claude-code-optimizer@latest\` — all skills, hooks, and rules update automatically."
     echo ""
 fi
 

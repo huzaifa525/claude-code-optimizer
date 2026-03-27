@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Generate conventional commit messages from staged changes and commit
+description: Use when the user wants to commit changes, save work, or create a git commit message.
 disable-model-invocation: true
 allowed-tools: Bash
 ---

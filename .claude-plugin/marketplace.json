@@ -1,0 +1,31 @@
+{
+  "title": "Claude Code Optimizer",
+  "tagline": "Cut token costs 50-70% with smart skills, hooks, and rules",
+  "categories": [
+    "productivity",
+    "optimization",
+    "developer-tools",
+    "token-management"
+  ],
+  "features": [
+    "25+ specialized skills for every workflow",
+    "10 automation hooks (protection, formatting, memory)",
+    "6 path-scoped rules (zero cost when inactive)",
+    "Auto-setup with stack detection",
+    "Persistent session memory across restarts",
+    "Subagent-driven development with two-stage review",
+    "Optimization modes (aggressive/balanced/thorough)",
+    "Git worktree isolation for safe development"
+  ],
+  "screenshots": [],
+  "keywords": [
+    "token-optimization",
+    "skills",
+    "hooks",
+    "rules",
+    "productivity",
+    "cost-reduction",
+    "developer-tools",
+    "workflow-automation"
+  ]
+}
