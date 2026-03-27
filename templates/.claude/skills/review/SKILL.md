@@ -103,6 +103,19 @@ Read each changed file in full to understand context, then check:
 - [what was done well — reinforce good patterns]
 ```
 
+## Pre-Delivery Checklist
+
+Before presenting the review, verify:
+
+- [ ] All changed files were read in full (not just the diff)
+- [ ] Stage 1 verdict is explicitly stated (PASS/FAIL)
+- [ ] Every critical issue has a file:line reference
+- [ ] Security section checked for OWASP top 5 at minimum
+- [ ] No "looks fine" without specific evidence
+- [ ] Existing test coverage verified for new code
+- [ ] Convention compliance checked against CLAUDE.md
+- [ ] Good practices section is not empty — always acknowledge what was done well
+
 ## Anti-Rationalization
 
 | Excuse | Rebuttal |

@@ -89,6 +89,20 @@ Check for known CVEs in dependencies.
 | "This is a low-priority app" | Low-priority apps are pivot points. Attackers use them to reach high-priority systems. |
 | "We'll fix it later" | Later never comes. Flag it now with severity. |
 
+## Pre-Delivery Checklist
+
+Before presenting the report, verify:
+
+- [ ] All 9 scan categories were checked (not skipped)
+- [ ] Every finding has a file:line reference
+- [ ] Severity levels are justified (not guessed)
+- [ ] No "probably safe" — each item is verified or flagged
+- [ ] Dependency audit command was actually run
+- [ ] .env and .gitignore were checked
+- [ ] Auth middleware coverage was mapped to routes
+- [ ] Passed checks section acknowledges secure patterns found
+- [ ] Recommendations are prioritized by actual risk, not alphabetical
+
 ## Output Format
 
 ```
