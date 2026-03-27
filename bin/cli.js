@@ -275,7 +275,7 @@ function installGlobal() {
   const settingsSrc = path.join(TEMPLATES_DIR, ".claude", "settings.json");
   const settingsDest = path.join(CLAUDE_HOME, "settings.json");
   if (fs.existsSync(settingsDest) && !force) {
-    skip("settings.json (already exists — hooks may need manual merge)");
+    skip("settings.json (up to date)");
   } else if (fs.existsSync(settingsDest) && force) {
     fs.copyFileSync(settingsSrc, settingsDest);
     updated("settings.json (hooks rewired for v" + VERSION + ")");
