@@ -4,6 +4,9 @@
 # Writes a summary to ~/.claude/sessions/ for cross-session memory
 # By Huzefa Nalkheda Wala | github.com/huzaifa525 | claude-code-optimizer
 
+# Windows UTF-8 safety
+[ -n "$WINDIR" ] || [ -n "$MSYSTEM" ] && { export LANG=C.UTF-8; export LC_ALL=C.UTF-8; } 2>/dev/null
+
 # Only run in git repos
 if ! git rev-parse --is-inside-work-tree &>/dev/null; then
     exit 0

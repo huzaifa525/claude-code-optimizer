@@ -96,6 +96,76 @@ ${STACK}${FRAMEWORK:+ / $FRAMEWORK}
 ## Entry Points
 $(echo -e "$ENTRIES" | grep -v '^$' || echo "- [fill in your entry points]")
 
+## Optimization Rules
+$(
+if [ "$FRAMEWORK" = "Next.js" ]; then
+cat << 'NEXTRULES'
+- Use Server Components by default — only add "use client" when needed (event handlers, hooks, browser APIs)
+- Prefer Server Actions over API routes for mutations
+- Use `next/image` for all images — never raw `<img>`
+- Use `next/link` for navigation — never raw `<a>` for internal links
+- Colocate data fetching in Server Components — avoid client-side fetch for initial data
+- Use `loading.tsx` and `error.tsx` for route-level loading/error states
+NEXTRULES
+elif [ "$FRAMEWORK" = "Express" ] || [ "$FRAMEWORK" = "Fastify" ]; then
+cat << 'EXPRESSRULES'
+- Follow routes → controllers → services → database pattern
+- Validate all input at route level (Zod, Joi, or express-validator)
+- Use async middleware with proper error forwarding (next(err))
+- Never expose stack traces in production error responses
+- Use parameterized queries — never string concatenation for SQL
+- Add rate limiting on auth endpoints
+EXPRESSRULES
+elif [ "$FRAMEWORK" = "FastAPI" ]; then
+cat << 'FASTAPIRULES'
+- Use Pydantic v2 models for all request/response schemas
+- Use async def for IO-bound routes, def for CPU-bound
+- Use dependency injection for database sessions and auth
+- Use Alembic for all schema migrations — never raw SQL DDL
+- Add OpenAPI tags and descriptions to all endpoints
+- Use HTTPException with proper status codes — never return raw dicts
+FASTAPIRULES
+elif [ "$FRAMEWORK" = "Django" ]; then
+cat << 'DJANGORULES'
+- Use class-based views for CRUD, function-based for custom logic
+- Use Django ORM — avoid raw SQL unless performance-critical
+- Run makemigrations + migrate for all model changes
+- Use Django forms or serializers for input validation
+- Use select_related/prefetch_related to avoid N+1 queries
+DJANGORULES
+elif [ "$FRAMEWORK" = "React" ] || [ "$FRAMEWORK" = "Vue" ] || [ "$FRAMEWORK" = "Angular" ] || [ "$FRAMEWORK" = "SvelteKit" ]; then
+cat << 'FRONTENDRULES'
+- Components should be small (< 150 lines) and single-responsibility
+- Lift state up only when necessary — colocate state with usage
+- Use semantic HTML elements (nav, main, article, section)
+- All interactive elements need keyboard and screen reader support
+- Images need alt text, buttons need aria-labels if icon-only
+- Use CSS variables or design tokens for colors, spacing, typography
+FRONTENDRULES
+elif [ "$STACK" = "Go" ]; then
+cat << 'GORULES'
+- Handle every error — never use _ for error returns
+- Use table-driven tests
+- Keep interfaces small (1-3 methods)
+- Use context.Context for cancellation and timeouts
+- Use struct embedding over inheritance
+GORULES
+elif [ "$STACK" = "Rust" ]; then
+cat << 'RUSTRULES'
+- Use Result<T, E> for fallible operations — avoid unwrap() in production code
+- Prefer &str over String for function parameters
+- Use derive macros for Debug, Clone, PartialEq on structs
+- Write unit tests in the same file with #[cfg(test)] mod tests
+- Use clippy: cargo clippy -- -D warnings
+RUSTRULES
+else
+cat << 'DEFAULTRULES'
+- [fill in your coding conventions]
+- [fill in your architecture patterns]
+DEFAULTRULES
+fi
+)
+
 ## Key Decisions
 - [fill in: Why X not Y → reason]
 
